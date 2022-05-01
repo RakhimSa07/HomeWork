@@ -1,0 +1,51 @@
+public class Ex13_3011 {  
+  public static void main(String[] args) {  
+    final String resours1 = "ratan jaiswal";  
+    final String resours2 = "vimal jaiswal";   
+    Thread ti1 = new Thread() {  
+      public void run() {  
+          synchronized (resours1) {  
+           System.out.println("Thread 1: locked resours 1");  
+           try {
+           Thread.sleep(100);
+           } catch (Exception e) {}
+           synchronized (resours2) {  
+           
+           
+           
+           
+           
+           
+           
+            System.out.println("Thread 1: locked resours 2");  
+               }
+              }
+             }
+           };
+   
+    Thread ti2 = new Thread() {  
+      public void run() {  
+        synchronized (resours2) {  
+          System.out.println("Thread 2: locked resours 2");  
+  
+          try {
+          Thread.sleep(100);
+          } catch (Exception e) {}  
+  
+          synchronized (resours1) {  
+          
+          
+          
+          
+          
+          
+            System.out.println("Thread 2: locked resours 1");  
+          }  
+        }  
+      }  
+    };  
+  
+    ti1.start();  
+    ti2.start();  
+  }  
+}  
