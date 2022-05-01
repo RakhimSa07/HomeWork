@@ -1,0 +1,38 @@
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+
+public class Ex11_3004{
+    Integer inter=new Integer(0);
+
+     Q3Synchronization(){
+         ExecutorService e=Executors.newFixedThreadPool(1000);
+         for(int i=0;i<1000;i++){
+             e.execute(new Sum());
+         }
+         e.shutdown();
+
+         while(!e.isTerminated()){
+
+         }
+         System.out.println(inter);
+     }
+    public static void main(String[]args){
+        new Q3Synchronization();
+    }
+
+     class Sum implements Runnable{
+
+
+        @Override
+        public void run() {
+
+            m();
+
+        }
+       public synchronized void m(){
+             inter=inter+1;
+         }
+     }
+
+}
